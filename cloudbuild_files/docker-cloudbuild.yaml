@@ -1,0 +1,32 @@
+steps:
+# Step 1: Build the Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/simple-go-app:$SHORT_SHA', './dockerbuild_image_code']
+
+
+# Step 2: Push the Docker image to Google Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/simple-go-app:$SHORT_SHA']
+
+# Step 3: Deploy the Docker image to the existing Cloud Run service
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - run
+  - deploy
+  - golang-service
+  - --image
+  - gcr.io/$PROJECT_ID/simple-go-app:$SHORT_SHA
+  - --region
+  - us-central1
+  - --platform
+  - managed
+  - --allow-unauthenticated
+
+# Set the images output for this build
+images:
+- 'gcr.io/$PROJECT_ID/simple-go-app:$SHORT_SHA'
+
+
+options:
+  logging : CLOUD_LOGGING_ONLY
+timeout: 1600s
