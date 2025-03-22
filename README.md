@@ -1,4 +1,4 @@
-# GCP-Cloud-Run-Golang-App
+# GCP-Cloud-Run-Weather-App
 
 In this project, I've deployed a containerized Weather Golang application on Google Cloud Run Continuous Deployment through integration with GitHub and Snyk for security. 
 
