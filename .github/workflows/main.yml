@@ -8,7 +8,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  SERVICE_NAME: myapp  # Name of your Cloud Run service
+  SERVICE_NAME: myapp1  # Name of your Cloud Run service
   REGION: us-central1  # Change to your desired region
 
 jobs:
