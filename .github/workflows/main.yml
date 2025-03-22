@@ -4,7 +4,7 @@ name: Deploy to Cloud Run
 on:
   push:
     branches:
-      - main  # Run this workflow only when pushing to main branch
+      - main  # Run this workflow only wh en pushing to main branch
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
